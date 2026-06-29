@@ -9,6 +9,7 @@
 
 A sassy chatbot with attitude, built with a Flask API backend and a React frontend. SassyBot responds to your messages with confidence, sass, and the occasional eye-roll. It learns from training data and falls back to handcrafted sassy responses when it does not know what to say.
 
+<<<<<<< HEAD
 ## Preview
 
 ![SassyBot Screenshot](screenshot.jpeg)
@@ -128,3 +129,6 @@ If the confidence score of a matched response falls below `0.4`, SassyBot ignore
 | Chatbot | ChatterBot, SQLite |
 | Frontend | React 18, Vite 5 |
 | Styling | CSS (no framework) |
+=======
+![alt text](<Screenshot 2025-10-08 223306.png>)
+>>>>>>> 721e8e04006bc8a00fb8f42b4e3e360ea67d23cf
