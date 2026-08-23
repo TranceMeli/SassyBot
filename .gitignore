@@ -43,3 +43,11 @@ Thumbs.db
 
 # Logs
 *.log
+
+# .gitignore
+.env
+__pycache__/
+*.sqlite3
+
+# React build output (served by Flask)
+static/
