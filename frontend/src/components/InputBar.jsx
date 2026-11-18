@@ -1,36 +1,36 @@
 import { useState } from 'react'
+import { SendIcon } from './Icons.jsx'
 
 export default function InputBar({ onSend }) {
   const [text, setText] = useState('')
 
-  function handleSend() {
+  function handleSubmit(e) {
+    e.preventDefault()
     const trimmed = text.trim()
     if (!trimmed) return
     onSend(trimmed)
     setText('')
   }
 
-  function handleKeyDown(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault()
-      handleSend()
-    }
-  }
-
   return (
-    <div className="input-bar">
+    <form className="input-bar" onSubmit={handleSubmit}>
+      <label htmlFor="chat-input" className="sr-only">
+        Message SassyBot
+      </label>
       <input
+        id="chat-input"
         type="text"
         className="chat-input"
-        placeholder="say something… if you must"
+        placeholder="Say something… if you must"
+        autoComplete="off"
         value={text}
         onChange={e => setText(e.target.value)}
-        onKeyDown={handleKeyDown}
         autoFocus
       />
-      <button className="send-btn" onClick={handleSend}>
+      <button type="submit" className="send-btn">
+        <SendIcon />
         Send
       </button>
-    </div>
+    </form>
   )
 }

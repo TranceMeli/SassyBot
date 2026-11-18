@@ -1,43 +1,37 @@
-const AvatarIcon = () => (
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-  </svg>
-)
+import { AlertIcon, RefreshIcon } from './Icons.jsx'
 
 export function TypingIndicator() {
   return (
-    <div className="msg bot">
-      <div className="msg-label">SassyBot</div>
-      <div className="msg-row">
-        <div className="msg-avatar">
-          <AvatarIcon />
-        </div>
-        <div className="typing-bubble">
-          <span /><span /><span />
-        </div>
+    <div className="typing">
+      <div className="typing-dots" aria-hidden="true">
+        <span /><span /><span />
+      </div>
+      <span>SassyBot is typing…</span>
+    </div>
+  )
+}
+
+export function ErrorNotice({ onRetry }) {
+  return (
+    <div className="error-card" role="alert">
+      <AlertIcon />
+      <div>
+        <p className="error-title">Couldn't reach SassyBot</p>
+        <p className="error-body">Check that the server is running, then try again.</p>
+        <button type="button" className="text-btn" onClick={onRetry}>
+          <RefreshIcon />
+          Retry
+        </button>
       </div>
     </div>
   )
 }
 
 export default function Message({ role, text }) {
-  if (role === 'bot') {
-    return (
-      <div className="msg bot">
-        <div className="msg-label">SassyBot</div>
-        <div className="msg-row">
-          <div className="msg-avatar">
-            <AvatarIcon />
-          </div>
-          <div className="bubble">{text}</div>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div className="msg user">
-      <div className="bubble">{text}</div>
+    <div className={`bubble ${role}`}>
+      <span className="sr-only">{role === 'bot' ? 'SassyBot: ' : 'You: '}</span>
+      {text}
     </div>
   )
 }

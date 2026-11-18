@@ -3,9 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SassyBot – a chatbot with attitude." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#faf9fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16121a" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>SassyBot</title>
-    <script type="module" crossorigin src="/assets/index-DbE4Zmoo.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-B97Ar6LY.css">
+    <script>
+      // Apply the saved theme before first paint to avoid a light/dark flash.
+      try {
+        var t = localStorage.getItem('sassybot-theme')
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/assets/index-DRcUPhoi.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dhz7TBQa.css">
   </head>
   <body>
     <div id="root"></div>
